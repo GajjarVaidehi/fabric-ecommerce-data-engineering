@@ -1,0 +1,39 @@
+table gld_dim_product
+	lineageTag: 6e12427e-eba3-4c67-b1bb-6e2a6ea071f5
+	sourceLineageTag: [dbo].[gld_dim_product]
+
+	column product_id
+		dataType: string
+		lineageTag: 9a746436-1be1-4179-ad21-4ff35c9bb47b
+		sourceLineageTag: product_id
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category_name
+		dataType: string
+		lineageTag: 0b56e630-3893-4345-b5ab-3a13b8a695fe
+		sourceLineageTag: product_category_name
+		summarizeBy: none
+		sourceColumn: product_category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 59ada4ea-2dcd-4645-bf90-416508752aea
+		sourceLineageTag: created_ts
+		summarizeBy: none
+		sourceColumn: created_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gld_dim_product = entity
+		mode: directLake
+		source
+			entityName: gld_dim_product
+			schemaName: dbo
+			expressionSource: 'DirectLake - e_commerce_data'
+

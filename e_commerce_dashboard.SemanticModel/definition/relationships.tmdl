@@ -1,0 +1,21 @@
+relationship 7203e8c9-6a1f-f19b-d730-8d5faf811690
+	fromColumn: gld_fact_sales.customer_id
+	toColumn: gld_dim_customer.customer_id
+
+relationship 42ddd8bc-36f0-6405-eeb5-88c931dbc404
+	fromColumn: gld_fact_sales.product_id
+	toColumn: gld_dim_product.product_id
+
+relationship bffdeb8f-7353-b419-6e36-16e9206b9d91
+	fromColumn: gld_fact_sales.order_date
+	toColumn: gld_dim_date.order_date
+
+relationship e538f7ba-c4eb-464b-1341-93aafb0fccdb
+	fromColumn: gld_dim_customer.customer_id
+	toColumn: gld_fact_reviews.customer_id
+
+relationship 25f8d7a1-0fd2-2232-7ad2-f56bddec4f7b
+	isActive: false
+	fromColumn: gld_fact_reviews.order_date
+	toColumn: gld_dim_date.order_date
+

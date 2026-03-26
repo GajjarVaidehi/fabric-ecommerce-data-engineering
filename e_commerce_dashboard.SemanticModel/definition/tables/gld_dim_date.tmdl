@@ -1,0 +1,71 @@
+table gld_dim_date
+	lineageTag: bdbef18f-6fcc-4e2a-972c-01fce4a2b4fd
+	sourceLineageTag: [dbo].[gld_dim_date]
+
+	column order_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f88d9305-7ee5-4d42-8334-34a67f479c2a
+		sourceLineageTag: order_date
+		summarizeBy: none
+		sourceColumn: order_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: cb7601d9-9908-4300-b041-e1a83491d879
+		sourceLineageTag: year
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ec963f2-76ee-44a0-a7ff-cd6c9e15bf41
+		sourceLineageTag: month
+		summarizeBy: none
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column day
+		dataType: int64
+		formatString: 0
+		lineageTag: 9aa63e69-5c8d-40e4-9029-a282382b47ae
+		sourceLineageTag: day
+		summarizeBy: none
+		sourceColumn: day
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_of_week
+		dataType: int64
+		formatString: 0
+		lineageTag: 057fc969-1bb2-4542-b3e3-ad3773f49a2c
+		sourceLineageTag: day_of_week
+		summarizeBy: none
+		sourceColumn: day_of_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: eb5fe925-792a-456a-bf7a-33cfcaf031ab
+		sourceLineageTag: created_ts
+		summarizeBy: none
+		sourceColumn: created_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gld_dim_date = entity
+		mode: directLake
+		source
+			entityName: gld_dim_date
+			schemaName: dbo
+			expressionSource: 'DirectLake - e_commerce_data'
+

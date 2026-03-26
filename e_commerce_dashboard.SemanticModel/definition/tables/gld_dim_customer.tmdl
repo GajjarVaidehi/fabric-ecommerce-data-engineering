@@ -1,0 +1,91 @@
+table gld_dim_customer
+	lineageTag: 03b9c39d-2e3b-4f78-b5ad-7f1e5a839c84
+	sourceLineageTag: [dbo].[gld_dim_customer]
+
+	measure 'Total Orders' = DISTINCTCOUNT(gld_fact_sales[order_id])
+		lineageTag: 0e24e769-3b7b-4d43-800c-d4ba7bbe0534
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Sales' = SUM(gld_fact_sales[sales_amount])
+		lineageTag: d0b3ea1b-b564-4660-8733-d84f4f40f290
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Customers' = DISTINCTCOUNT(gld_fact_sales[customer_id])
+		formatString: 0
+		lineageTag: 5a997010-ae89-429f-b2ea-04a1fb1c995d
+
+		changedProperty = Name
+
+	measure 'Avg Order Value' = DIVIDE([Total Sales], [Total Orders])
+		lineageTag: 9a8fb158-70bd-42d2-9f94-01c4622d6fec
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Rating' = AVERAGE(gld_fact_reviews[review_score])
+		lineageTag: 321e24e3-be8c-4750-9e34-640655bd3d12
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column customer_id
+		dataType: string
+		lineageTag: 5efde998-5478-4ae9-8212-c52f88fd7d1c
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_unique_id
+		dataType: string
+		lineageTag: b479fe3e-9150-4633-b80f-7cc5bfb5e09a
+		sourceLineageTag: customer_unique_id
+		summarizeBy: none
+		sourceColumn: customer_unique_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_city
+		dataType: string
+		lineageTag: ea5abbd9-30a7-4b4f-a25e-14ce2229339a
+		sourceLineageTag: customer_city
+		summarizeBy: none
+		sourceColumn: customer_city
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_state
+		dataType: string
+		lineageTag: 13b87789-3648-48b6-8c0a-7f191bc4a2b0
+		sourceLineageTag: customer_state
+		summarizeBy: none
+		sourceColumn: customer_state
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c9c66a25-d808-4519-824b-39829577db4d
+		sourceLineageTag: created_ts
+		summarizeBy: none
+		sourceColumn: created_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gld_dim_customer = entity
+		mode: directLake
+		source
+			entityName: gld_dim_customer
+			schemaName: dbo
+			expressionSource: 'DirectLake - e_commerce_data'
+

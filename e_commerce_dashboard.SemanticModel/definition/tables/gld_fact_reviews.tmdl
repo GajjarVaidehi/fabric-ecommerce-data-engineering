@@ -1,0 +1,106 @@
+table gld_fact_reviews
+	lineageTag: ab5a4aa0-8396-446a-9284-f99f7a574a5d
+	sourceLineageTag: [dbo].[gld_fact_reviews]
+
+	column review_id
+		dataType: string
+		lineageTag: cdc8b616-60ca-4acc-a9e9-85b0d1ae5177
+		sourceLineageTag: review_id
+		summarizeBy: none
+		sourceColumn: review_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: string
+		lineageTag: 1e1dee0a-cc6f-4e8b-8666-51c6275c32c6
+		sourceLineageTag: order_id
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: string
+		lineageTag: ed60f743-29c0-4a22-bb14-09fa2b4ef4e7
+		sourceLineageTag: customer_id
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 32beca85-a858-46c7-a521-a8a1cd74f71b
+		sourceLineageTag: order_date
+		summarizeBy: none
+		sourceColumn: order_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_score
+		dataType: int64
+		formatString: 0
+		lineageTag: f3327c27-70d4-47d6-bc39-09904d71383d
+		sourceLineageTag: review_score
+		summarizeBy: none
+		sourceColumn: review_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_comment_title
+		dataType: string
+		lineageTag: 08ab2d50-c1c4-4971-a253-d042a319dbd2
+		sourceLineageTag: review_comment_title
+		summarizeBy: none
+		sourceColumn: review_comment_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_comment_message
+		dataType: string
+		lineageTag: a11d2390-2d6c-4e16-84cf-79282807b012
+		sourceLineageTag: review_comment_message
+		summarizeBy: none
+		sourceColumn: review_comment_message
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_creation_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0fe6ab0c-23f9-46c9-b526-5f5f30b97d3f
+		sourceLineageTag: review_creation_date
+		summarizeBy: none
+		sourceColumn: review_creation_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column review_answer_timestamp
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d12d6e9e-496b-4baf-b8ab-b4a60e0cb00d
+		sourceLineageTag: review_answer_timestamp
+		summarizeBy: none
+		sourceColumn: review_answer_timestamp
+
+		annotation SummarizationSetBy = Automatic
+
+	column created_ts
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b4867046-6e93-4553-82c0-ea2800d3d36f
+		sourceLineageTag: created_ts
+		summarizeBy: none
+		sourceColumn: created_ts
+
+		annotation SummarizationSetBy = Automatic
+
+	partition gld_fact_reviews = entity
+		mode: directLake
+		source
+			entityName: gld_fact_reviews
+			schemaName: dbo
+			expressionSource: 'DirectLake - e_commerce_data'
+
